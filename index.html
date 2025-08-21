@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Love Nolpen * Website Cinta</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+<style>
+    :root{
+      --bg1:#0f1020; --bg2:#211936; --pink:#ff7aa2; --rose:#ff4d84; --lav:#b18cff; --soft:#ffd6e8; --card:#1b1330; --text:#f7f6ff;
+      --glass: rgba(255,255,255,.08);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;color:var(--text);font-family:Poppins,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial,sans-serif;background:
+      radial-gradient(1200px 600px at 10% -10%, #2a2147 0%, transparent 60%),
+      radial-gradient(800px 400px at 100% 0%, #241b3f 0%, transparent 55%),
+      linear-gradient(160deg,var(--bg1),var(--bg2));
+      overflow-x:hidden;
+    }
+    a{color:inherit;text-decoration:none}
+    .container{max-width:1100px;margin:0 auto;padding:0 20px}
+    header{position:sticky;top:0;background:linear-gradient(to bottom, rgba(15,16,32,.9), rgba(15,16,32,.3));backdrop-filter: blur(10px);z-index:50;border-bottom:1px solid rgba(255,255,255,.08)}
+    nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+    .brand{font-family:"Great Vibes",cursive;font-size:36px;letter-spacing:.5px;color:var(--soft)}
+    .menu{display:flex;gap:22px}
+    .menu a{opacity:.85}
+    .menu a:hover{opacity:1}
+    .btn{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,var(--rose),var(--lav));padding:12px 18px;border-radius:999px;color:white;font-weight:600;box-shadow:0 8px 24px rgba(255,77,132,.35);transition:transform .2s}
+    .btn:hover{transform:translateY(-2px)}
+
+    /* HERO */
+    .hero{position:relative;padding:120px 0 100px;overflow:hidden}
+    .hero .container{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+    .title{font-size:clamp(40px,6vw,64px);line-height:1.05;margin:0 0 10px;font-weight:700}
+    .subtitle{font-size:18px;opacity:.9;margin:0 0 24px}
+    .pill{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.08);padding:8px 14px;border-radius:999px;border:1px solid rgba(255,255,255,.12);backdrop-filter: blur(6px);font-size:14px}
+    .card{background:var(--glass);border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:18px;box-shadow:0 8px 24px rgba(0,0,0,.35)}
+    .hero-art{aspect-ratio:4/5;border-radius:28px;position:relative;background:
+      radial-gradient(120% 120% at 100% 0%, rgba(255,122,162,.12) 0%, rgba(255,122,162,0) 60%),
+      linear-gradient(180deg, rgba(177,140,255,.15), rgba(177,140,255,.02));
+      border:1px solid rgba(255,255,255,.12);
+      overflow:hidden
+    }
+    .hero-art::before, .hero-art::after{
+      content:"";position:absolute;inset:0;background:conic-gradient(from 90deg at 50% 50%, rgba(255,122,162,.25), rgba(177,140,255,.15), rgba(255,214,232,.2), rgba(255,122,162,.25));mix-blend-mode:screen;opacity:.35;animation:spin 18s linear infinite
+    }
+    .hero-art::after{filter:blur(30px);opacity:.25}
+    @keyframes spin{to{transform:rotate(360deg)}}
+
+    /* FLOATING HEARTS */
+    .hearts{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+    .heart{position:absolute;width:14px;height:14px;background:radial-gradient(circle at 30% 30%, #fff 0 15%, var(--pink) 16% 100%);transform:rotate(45deg);opacity:.55;animation:float 12s linear infinite}
+    .heart::before,.heart::after{content:"";position:absolute;width:100%;height:100%;background:inherit;border-radius:50%}
+    .heart::before{left:-50%}
+    .heart::after{top:-50%}
+    @keyframes float{0%{transform:translateY(0) rotate(45deg)}100%{transform:translateY(-120vh) rotate(45deg)}}
+    /* generate hearts */
+    .heart.h1{left:10%;animation-duration:13s}
+    .heart.h2{left:25%;animation-duration:11s;animation-delay:2s}
+    .heart.h3{left:40%;animation-duration:15s;animation-delay:4s}
+    .heart.h4{left:60%;animation-duration:12s;animation-delay:1s}
+    .heart.h5{left:75%;animation-duration:16s;animation-delay:3s}
+    .heart.h6{left:85%;animation-duration:10s;animation-delay:5s}
+
+    /* SECTIONS */
+    section{padding:80px 0}
+    .section-title{font-size:32px;margin:0 0 14px}
+    .section-sub{opacity:.85;margin:0 0 26px}
+
+    /* QUOTES */
+    .quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    blockquote{margin:0;padding:18px 18px 18px 22px;border-left:4px solid var(--rose);background:rgba(255,255,255,.06);border-radius:12px;font-style:italic}
+    cite{display:block;margin-top:10px;opacity:.8;font-size:14px}
+
+    /* TIMELINE */
+    .timeline{position:relative;margin:30px 0;padding-left:24px}
+    .timeline::before{content:"";position:absolute;left:8px;top:0;bottom:0;width:2px;background:linear-gradient(var(--lav),var(--rose))}
+    .t-item{position:relative;margin:0 0 24px}
+    .t-item::before{content:"";position:absolute;left:-2px;top:8px;width:12px;height:12px;border-radius:50%;background:linear-gradient(135deg,var(--lav),var(--rose));box-shadow:0 0 0 4px rgba(255,255,255,.06)}
+    .t-title{font-weight:700}
+
+    /* GALLERY */
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .tile{aspect-ratio:1;border-radius:16px;background:linear-gradient(135deg, rgba(255,122,162,.25), rgba(177,140,255,.25));border:1px solid rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;font-weight:600;letter-spacing:.4px}
+
+    /* LETTER */
+    .letter{display:grid;grid-template-columns:1.2fr .8fr;gap:24px}
+    textarea,input{width:100%;padding:14px 16px;border-radius:14px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.06);color:var(--text)}
+    textarea{min-height:140px;resize:vertical}
+    form .btn{border:0}
+
+    /* FOOTER */
+    footer{padding:40px 0;opacity:.85;border-top:1px solid rgba(255,255,255,.08)}
+
+    /* RESPONSIVE */
+    @media (max-width: 960px){
+      .hero .container{grid-template-columns:1fr}
+      .quotes{grid-template-columns:1fr}
+      .grid{grid-template-columns:1fr 1fr}
+      .letter{grid-template-columns:1fr}
+      nav .menu{display:none}
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="container">
+    <nav>
+      <div class="brand">Love A Dan z</div>
+
+      <!-- Tombol hamburger (titik tiga) -->
+      <div class="hamburger" id="hamburger">
+        &#8942;
+      </div>
+
+      <!-- Menu navigasi -->
+      <div class="menu" id="menu">
+        <a href="#tentang">Tentang</a>
+        <a href="#kutipan">Kutipan</a>
+        <a href="#galeri">Galeri</a>
+        <a href="#surat">Surat</a>
+      </div>
+
+      <!-- Tombol Tulis Surat -->
+      <a class="btn" href="#surat" aria-label="Tulis surat cinta" id="tulisSurat">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" 
+             xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 2-8 5L4 6" 
+                stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Tulis Surat
+      </a>
+    </nav>
+  </div>
+</header>
+
+<style>
+/* Style dasar */
+header {
+  background: #000000;
+  padding: 10px 0;
+  color: white;
+}
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+.brand {
+  font-weight: bold;
+  font-size: 20px;
+}
+.menu {
+  display: flex;
+  gap: 20px;
+}
+.menu a {
+  color: white;
+  text-decoration: none;
+}
+.btn {
+  background: #c2185b;
+  padding: 8px 12px;
+  border-radius: 8px;
+  color: white;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: 0.3s;
+}
+
+/* Tombol hamburger (titik tiga) */
+.hamburger {
+  display: none;
+  font-size: 26px;
+  cursor: pointer;
+  color: white;
+}
+
+/* Responsif */
+@media (max-width: 768px) {
+  .menu {
+    display: none;
+    flex-direction: column;
+    background: #d81b60;
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    padding: 15px;
+    border-radius: 10px;
+  }
+  .menu.show {
+    display: flex;
+  }
+  .hamburger {
+    display: block;
+    position: absolute;
+    right: 20px;
+    top: 15px;
+  }
+
+  /* Tulis surat ke tengah */
+#tulisSurat {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-25%, -50%);
+}
+
+}
+</style>
+
+<script>
+  // Toggle menu saat klik titik tiga
+  const hamburger = document.getElementById("hamburger");
+  const menu = document.getElementById("menu");
+
+  hamburger.addEventListener("click", () => {
+    menu.classList.toggle("show");
+  });
+</script>
+
+
+
+  <main>
+    <!-- HERO -->
+    <section class="hero" id="home">
+      <div class="hearts" aria-hidden="true">
+        <div class="heart h1">I Love You</div>
+        <div class="heart h2">Sayang</div>
+        <div class="heart h3">Cinta</div>
+        <div class="heart h4">Kasih</div>
+        <div class="heart h5">Rindu</div>
+        <div class="heart h6">Manis</div>
+        <div class="heart h6">A Dan Z</div>
+      </div>
+      <div class="container">
+        <div>
+          <span class="pill"># Sebuah halaman kecil tentang cinta</span>
+          <h1 class="title">Cinta itu sederhana:<br> hadir, memahami, lalu tumbuh bersama.</h1>
+          <p class="subtitle">Bangun momen yang berarti, kenang hal-hal kecil, dan biarkan kasih menuntun hari-hari kita.</p>
+          <div style="display:flex;gap:12px;flex-wrap:wrap">
+            <a class="btn" href="#kutipan">Lihat Kutipan</a>
+            <a class="btn" href="#galeri" style="background:linear-gradient(135deg,var(--lav),var(--rose))">Buka Galeri</a>
+          </div>
+        </div>
+        <div class="hero-art card">
+        <img src="assets/images/wat.jpeg" alt="Foto saya" 
+            style="width:100%;height:100%;object-fit:cover;border-radius:20px;">
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="tentang">
+      <div class="container">
+        <h2 class="section-title">Tentang Halaman Ini</h2>
+        <p class="section-sub">Web mini ini dirancang untuk merayakan cinta—dengan tampilan elegan, animasi lembut, dan sentuhan warna mawar & lavender. Gunakan untuk mengirim <em>love letter</em>, berbagi kutipan, atau sekadar menjadi halaman kenangan kalian.</p>
+        <div class="timeline">
+          <div class="t-item">
+            <div class="t-title">Kenangan Pertama</div>
+            <div>Setiap kisah hebat dimulai dari tatap sederhana dan senyum yang jujur.</div>
+          </div>
+          <div class="t-item">
+            <div class="t-title">Tumbuh Bersama</div>
+            <div>Kita belajar bahasa sabar, mengerti tanpa menuntut, dan merayakan proses.</div>
+          </div>
+          <div class="t-item">
+            <div class="t-title">Selamanya Belajar</div>
+            <div>Cinta matang bukan karena waktu, melainkan komitmen yang dirawat setiap hari.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- QUOTES -->
+    <section id="kutipan">
+      <div class="container">
+        <h2 class="section-title">Kutipan Favorit</h2>
+        <p class="section-sub">Ambil satu, bisikkan pelan, dan kirimkan pada orang yang kamu sayang.</p>
+        <div class="quotes">
+          <blockquote>"Cinta bukan saling menatap, melainkan memandang bersama ke arah yang sama."<cite>— Antoine de Saint‑Exupéry</cite></blockquote>
+          <blockquote>"Kita bertemu bukan kebetulan; semesta pandai merangkai pertemuan yang tepat."<cite>— Anonim</cite></blockquote>
+          <blockquote>"Dalam sunyi, namamu tetap paling nyaring."<cite>— Puisi Kecil</cite></blockquote>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+   <section id="galeri">
+  <div class="container">
+    <h2 class="section-title">Galeri Kenangan</h2>
+    <p class="section-sub">Klik foto untuk melihat momen dengan kata-kata indah.</p>
+    <div class="grid">
+      <div class="tile">
+        <img src="assets/images/11111.jpeg" alt="Momen 1" 
+             onclick="openModal(this, 'Momen kebersamaan yang tidak terlupakan.')">
+      </div>
+      <div class="tile">
+        <img src="assets/images/1.jpeg" alt="Momen 2" 
+             onclick="openModal(this, 'Belajar bersama demi masa depan.')">
+      </div>
+
+      <div class="tile">
+        <img src="assets/images/BOOK1.jpg" alt="Momen 3" 
+             onclick="openModal(this, 'Hari penuh semangat dan kebahagiaan.')">
+      </div>
+      <div class="tile">
+        <img src="assets/images/WhatsApp Image 2025-06-07 at 03.33.44.jpeg" alt="Momen 4" 
+             onclick="openModal(this, 'Hari penuh semangat dan kebahagiaan.')">
+      </div>
+      <div class="tile">
+        <img src="assets/images/download.jfif" alt="Momen 5" 
+             onclick="openModal(this, 'Hari penuh semangat dan kebahagiaan.')">
+      </div>
+      <div class="tile">
+        <img src="assets/images/agustus1_orig.jpg" alt="Momen 6" 
+             onclick="openModal(this, 'Kenangan saat perayaan Agustus.')">
+      </div>
+      <div class="tile">
+        <img src="assets/images/WhatsApp Image 2025-06-07 at 03.33.28.jpeg" alt="Momen 7" 
+             onclick="openModal(this, 'Tawa dan canda yang selalu dirindukan.')">
+      </div>
+      <div class="tile">
+        <img src="assets/images/211.jpg" alt="Momen 8" 
+             onclick="openModal(this, 'Perjalanan yang penuh cerita.')">
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+<!-- Modal -->
+<div id="imageModal" class="modal">
+  <span class="close" onclick="closeModal()">&times;</span>
+  <img class="modal-content" id="modalImg">
+  <div id="caption"></div>
+</div>
+
+<style>
+/* Grid Galeri */
+#galeri .grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-top: 20px;
+}
+
+
+#galeri .tile img {
+  width: 100%;
+  aspect-ratio: 4 / 3; /* otomatis jaga rasio 4:3 */
+  object-fit: cover;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+#galeri .tile img:hover {
+  transform: scale(1.05);
+}
+
+/* Modal style */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  padding-top: 60px;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.9);
+}
+
+.modal-content {
+  display: block;
+  margin: auto;
+  max-width: 80%;
+  border-radius: 10px;
+  animation: zoom 0.3s ease;
+}
+
+#caption {
+  margin: 15px auto;
+  text-align: center;
+  color: #fff;
+  font-size: 18px;
+  max-width: 70%;
+}
+
+.close {
+  position: absolute;
+  top: 20px; right: 35px;
+  color: #fff;
+  font-size: 40px;
+  cursor: pointer;
+}
+
+@keyframes zoom {
+  from {transform: scale(0.8);}
+  to {transform: scale(1);}
+}
+
+
+
+</style>
+
+<script>
+function openModal(imgElement, captionText) {
+  document.getElementById("imageModal").style.display = "block";
+  document.getElementById("modalImg").src = imgElement.src;
+  document.getElementById("caption").innerText = captionText;
+}
+
+function closeModal() {
+  document.getElementById("imageModal").style.display = "none";
+}
+</script>
+
+    <!-- LETTER -->
+    <section id="surat">
+      <div class="container">
+        <h2 class="section-title">Tulis Surat Cinta</h2>
+        <p class="section-sub">Ketikkan pesan paling tulusmu. Klik kirim untuk menyalinnya—siap di‑paste ke WhatsApp/DM.</p>
+        <div class="letter">
+          <form class="card" onsubmit="copyLetter(event)">
+            <div style="display:grid;gap:14px">
+              <input type="text" id="to" placeholder="Untuk: (Nama)" aria-label="Untuk" required>
+              <textarea id="message" placeholder="Tuliskan isi suratmu di sini..." aria-label="Pesan" required></textarea>
+              <button class="btn" type="submit">Kirim Surat</button>
+              <small id="copied" style="opacity:.85"></small>
+            </div>
+          </form>
+          <div class="card">
+            <h3 style="margin-top:0">Tips Menulis</h3>
+            <ul style="margin:10px 0 0 18px;opacity:.9">
+              <li>Sebutkan momen spesifik yang berkesan.</li>
+              <li>Jujur tentang perasaanmu, tanpa berlebihan.</li>
+              <li>Akhiri dengan harapan sederhana untuk esok.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+    <footer>
+      <!--  <div class="container" style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap">
+            <div>© <span id="year"></span> Love Blossom — dibuat dengan ♥</div>
+            <div style="display:flex;gap:16px;font-size:20px">
+            <a href="https://wa.me/081343018057" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://web.facebook.com/pekei.a.2025" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="https://www.instagram.com/adanz0821/" target="_blank"><i class="fab fa-instagram"></i></a>
+            </div>
+            <div><a href="#home">Kembali ke atas ↑</a></div>
+        </div> --> 
+
+    <div class="container" style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center">
+      <div>© <span id="year"></span> Love Blossom — dibuat dengan ♥</div>
+      
+      <!-- Bagian Sosial Media -->
+      <div style="display:flex;gap:18px;font-size:22px">
+        <a href="https://wa.me/081343018057" target="_blank" aria-label="WhatsApp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="https://web.facebook.com/pekei.a.2025" target="_blank" aria-label="Facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+        <a href="https://www.instagram.com/adanz0821/" target="_blank" aria-label="Instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+<!--<a href="https://t.me/username" target="_blank" aria-label="Telegram">
+          <i class="fab fa-telegram"></i>
+        </a> -->
+      </div>
+
+      <div><a href="#home">Kembali ke atas ↑</a></div>
+    </div>
+    <style>
+    footer a i {
+     transition: color .3s;
+        }
+        footer a:hover i.fa-whatsapp { color: #25D366; }   /* hijau WA */
+        footer a:hover i.fa-facebook { color: #1877F2; }   /* biru FB */
+        footer a:hover i.fa-instagram { color: #E4405F; }  /* pink IG */
+        footer a:hover i.fa-telegram { color: #0088cc; }   /* biru Telegram */
+
+    </style>
+  </footer>
+
+
+  <script>
+    // Smooth scroll for in-page links
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', e=>{
+        const id = a.getAttribute('href').slice(1);
+        const el = document.getElementById(id);
+        if(el){ e.preventDefault(); el.scrollIntoView({behavior:'smooth'}); }
+      })
+    })
+
+    // Footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Copy letter
+    function copyLetter(e){
+      e.preventDefault();
+      const to = document.getElementById('to').value.trim();
+      const msg = document.getElementById('message').value.trim();
+      const text = `Untuk ${to},\n\n${msg}\n\n— Dengan kasih`;
+      navigator.clipboard.writeText(text).then(()=>{
+        const c=document.getElementById('copied');
+        c.textContent='Tersalin! Tempelkan di WhatsApp/DM kamu.';
+        setTimeout(()=>c.textContent='',3000);
+      });
+    }
+  </script>
+</body>
+</html>
